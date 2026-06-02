@@ -8,15 +8,23 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+frontend/node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
+.firebase
+frontend/dist
+screenshots/*.tmp
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+.DS_Store?
 *.suo
 *.ntvs*
 *.njsproj

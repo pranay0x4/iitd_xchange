@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and balance",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "username": { "type": "string" },
+        "balance": { "type": "number" },
+        "usernameEdited": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "username", "balance", "usernameEdited", "createdAt"]
+    },
+    "Market": {
+      "title": "Market",
+      "description": "Prediction market event",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "optionA": { "type": "string" },
+        "optionB": { "type": "string" },
+        "endDate": { "type": "string", "format": "date-time" },
+        "poolA": { "type": "number" },
+        "poolB": { "type": "number" },
+        "order": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "totalPredictors": { "type": "number" },
+        "status": { "type": "string", "enum": ["open", "resolved"] },
+        "outcome": { "type": "string", "enum": ["A", "B", "none"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "optionA", "optionB", "endDate", "poolA", "poolB", "totalPredictors", "status", "createdAt"]
+    },
+    "Bet": {
+      "title": "Bet",
+      "description": "User's bet on a market",
+      "type": "object",
+      "properties": {
+        "marketId": { "type": "string" },
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["A", "B", "yes", "no"] },
+        "amount": { "type": "number" },
+        "shares": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["marketId", "userId", "type", "amount", "shares", "timestamp"]
+    },
+    "OddsHistory": {
+      "title": "OddsHistory",
+      "description": "Historical odds for a market",
+      "type": "object",
+      "properties": {
+        "marketId": { "type": "string" },
+        "oddsA": { "type": "number" },
+        "oddsB": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["marketId", "oddsA", "oddsB", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile and balance"
+    },
+    "/markets/{marketId}": {
+      "schema": "Market",
+      "description": "Prediction market event"
+    },
+    "/bets/{betId}": {
+      "schema": "Bet",
+      "description": "User's bet on a market"
+    },
+    "/odds_history/{historyId}": {
+      "schema": "OddsHistory",
+      "description": "Historical odds for a market"
+    }
+  }
+}
