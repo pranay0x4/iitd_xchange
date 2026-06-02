@@ -108,3 +108,4 @@ in the root `.env` file.
 - Most of the product logic lives in the frontend.
 - Firestore is used for users, markets, bets, odds history, and feedback.
 - This repo is mainly here to preserve the project safely for public viewing, not as an active production deployment.
+# iitd_xchange
