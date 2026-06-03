@@ -72,6 +72,7 @@ User
 ```text
 .
 ├── README.md
+├── learnings.md
 ├── LICENSE
 ├── .env.example
 ├── screenshots/
@@ -79,6 +80,15 @@ User
 ├── frontend/
 └── firebase/
 ```
+
+## Lessons Learned & Post-Mortem
+
+I wrote down an honest post-mortem reflection about the technical choices, mistakes, and operational compromises made during the project. You can read the full write-up in [learnings.md](learnings.md).
+
+### Quick Summary:
+- **What went right:** Launching during campus election season drove instant virality. Microsoft OAuth restricted access to verified students, and the mobile-first design felt premium.
+- **Mistakes made:** Core trading calculations and settlements ran entirely on the client, admin control lists were hardcoded in the frontend, and the real-time leaderboard listened to the entire database, leading to massive Firestore read bills.
+- **If I built V2:** I would offload math/settlement to a backend (or Cloud Functions), pre-compute leaderboards asynchronously, and implement proper AMM pricing instead of flat pari-mutuel payouts.
 
 ## Running locally
 
